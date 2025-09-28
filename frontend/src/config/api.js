@@ -1,6 +1,6 @@
 // API Configuration
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://todo-list-sage-omega.vercel.app' // Use Vercel deployment URL
+  ? process.env.REACT_APP_API_URL || 'https://your-vercel-app.vercel.app' // Use environment variable or update with actual deployment URL
   : 'http://localhost:1000'; // Use localhost in development
 
 export const API_ENDPOINTS = {

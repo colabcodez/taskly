@@ -58,8 +58,12 @@ const Signup = () => {
     }
 
     setIsLoading(true);
-        try {
-          const response = await axios.post(API_ENDPOINTS.AUTH.REGISTER, Inputs);
+    try {
+      console.log("Attempting signup with:", Inputs);
+      console.log("API endpoint:", API_ENDPOINTS.AUTH.REGISTER);
+      
+      const response = await axios.post(API_ENDPOINTS.AUTH.REGISTER, Inputs);
+      console.log("Signup response:", response.data);
 
       if (response.data.message === "User Already Exists") {
         toast.error(response.data.message);
@@ -74,7 +78,19 @@ const Signup = () => {
       }
     } catch (error) {
       console.error("Signup error:", error);
-      toast.error(error.response?.data?.message || "Signup failed. Please try again.");
+      console.error("Error response:", error.response?.data);
+      console.error("Error status:", error.response?.status);
+      console.error("Error headers:", error.response?.headers);
+      
+      if (error.code === 'NETWORK_ERROR' || error.message.includes('Network Error')) {
+        toast.error("Network error: Please check your internet connection and try again.");
+      } else if (error.response?.status === 404) {
+        toast.error("API endpoint not found. Please contact support.");
+      } else if (error.response?.status >= 500) {
+        toast.error("Server error. Please try again later.");
+      } else {
+        toast.error(error.response?.data?.message || "Signup failed. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
