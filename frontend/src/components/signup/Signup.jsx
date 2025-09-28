@@ -50,6 +50,16 @@ const Signup = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const testApiConnection = async () => {
+    try {
+      console.log("Testing API connection...");
+      const response = await axios.get(API_ENDPOINTS.AUTH.REGISTER.replace('/register', '/test'));
+      console.log("API test response:", response);
+    } catch (error) {
+      console.log("API test error:", error);
+    }
+  };
+
   const submit = async (e) => {
     e.preventDefault();
 
@@ -59,8 +69,11 @@ const Signup = () => {
 
     setIsLoading(true);
     try {
+      console.log("=== SIGNUP DEBUG INFO ===");
       console.log("Attempting signup with:", Inputs);
       console.log("API endpoint:", API_ENDPOINTS.AUTH.REGISTER);
+      console.log("Environment:", process.env.NODE_ENV);
+      console.log("API Base URL:", process.env.REACT_APP_API_URL);
       
       const response = await axios.post(API_ENDPOINTS.AUTH.REGISTER, Inputs);
       console.log("Signup response:", response.data);
@@ -77,10 +90,15 @@ const Signup = () => {
         history("/signin");
       }
     } catch (error) {
-      console.error("Signup error:", error);
+      console.error("=== SIGNUP ERROR DEBUG ===");
+      console.error("Full error object:", error);
+      console.error("Error message:", error.message);
+      console.error("Error code:", error.code);
       console.error("Error response:", error.response?.data);
       console.error("Error status:", error.response?.status);
       console.error("Error headers:", error.response?.headers);
+      console.error("Request URL:", error.config?.url);
+      console.error("Request method:", error.config?.method);
       
       if (error.code === 'NETWORK_ERROR' || error.message.includes('Network Error')) {
         toast.error("Network error: Please check your internet connection and try again.");
@@ -183,6 +201,24 @@ const Signup = () => {
                 </>
               )}
             </button>
+            
+            {/* Debug button - remove in production */}
+            {process.env.NODE_ENV === 'development' && (
+              <button
+                type="button"
+                onClick={testApiConnection}
+                style={{
+                  marginTop: '10px',
+                  padding: '5px 10px',
+                  fontSize: '12px',
+                  background: '#f0f0f0',
+                  border: '1px solid #ccc',
+                  borderRadius: '3px'
+                }}
+              >
+                Test API Connection
+              </button>
+            )}
           </form>
 
           <div className="auth-footer">

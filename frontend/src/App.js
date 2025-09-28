@@ -9,7 +9,7 @@ import SignIn from "./components/signup/SignIn";
 import Todo from "./components/todo/Todo";
 import { useDispatch } from "react-redux";
 import { authActions } from "./store";
-import ApiDebug from "./components/debug/ApiDebug";
+// import ApiDebug from "./components/debug/ApiDebug";
 // import { ThemeProvider } from "./contexts/ThemeContext";
 const App = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const App = () => {
         </Router>
 
         <Footer />
-        <ApiDebug />
+        {/* <ApiDebug /> */}
       </div>
     // </ThemeProvider>
   );
