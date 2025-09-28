@@ -1,108 +1,160 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-import { RiContactsBook2Fill } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authActions } from "../../store";
-import { useNavigate } from "react-router-dom";
+import {
+  FiCheckSquare,
+  FiHome,
+  FiUser,
+  FiLogOut,
+  FiMenu,
+  FiX,
+  FiChevronDown,
+} from "react-icons/fi";
+
 const Navbar = () => {
-  const history = useNavigate();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const dispatch = useDispatch();
-  const logout = () => {
-    sessionStorage.clear("id");
-    dispatch(authActions.logout());
-    history("/");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
+
+  const logout = () => {
+    sessionStorage.clear();
+    dispatch(authActions.logout());
+    navigate("/signin");
+    setIsMenuOpen(false);
+  };
+
+  const isActive = (path) => location.pathname === path;
+
+  const navItems = [
+    { path: "/", label: "Home", icon: <FiHome />, requireAuth: false, hideWhenLoggedIn: true },
+    { path: "/todo", label: "Dashboard", icon: <FiCheckSquare />, requireAuth: true },
+  ];
+
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg ">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            <RiContactsBook2Fill /> Todo
+    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+      <div className="container">
+        <div className="navbar-content">
+          {/* Logo */}
+          <Link to="/" className="navbar-brand" onClick={() => setIsMenuOpen(false)}>
+            <FiCheckSquare className="brand-icon" />
+            <span className="brand-text">todoist</span>
           </Link>
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item mx-2">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item mx-2">
+          {/* Desktop Navigation */}
+          <div className="navbar-nav-desktop">
+            {navItems.map((item) => {
+              if (item.requireAuth && !isLoggedIn) return null;
+              if (item.hideWhenLoggedIn && isLoggedIn) return null;
+              return (
                 <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/about"
+                  key={item.path}
+                  to={item.path}
+                  className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
                 >
-                  About Us
+                  {item.icon}
+                  <span>{item.label}</span>
                 </Link>
-              </li>
-              <li className="nav-item mx-2">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/todo"
-                >
-                  Todo
+              );
+            })}
+          </div>
+
+          {/* Right Side Actions */}
+          <div className="navbar-actions">
+            {/* Auth Buttons */}
+            {!isLoggedIn ? (
+              <div className="auth-buttons">
+                <Link to="/signin" className="btn btn-ghost btn-sm">
+                  Log in
                 </Link>
-              </li>
-              {!isLoggedIn && (
-                <>
-                  <div className="d-flex ">
-                    <li className="nav-item mx-2">
-                      <Link
-                        className="nav-link active btn-nav p-2"
-                        aria-current="page"
-                        to="/signup"
-                      >
-                        SignUp
-                      </Link>
-                    </li>
-                  </div>
-                  <div className="d-flex my-lg-0 my-2 ">
-                    <li className="nav-item mx-2">
-                      <Link
-                        className="nav-link active btn-nav p-2"
-                        aria-current="page"
-                        to="/signin"
-                      >
-                        SignIn
-                      </Link>
-                    </li>
-                  </div>
-                </>
-              )}
-              {isLoggedIn && (
-                <div className="d-flex">
-                  <li className="nav-item mx-2" onClick={logout}>
-                    <Link
-                      className="nav-link active btn-nav p-2"
-                      aria-current="page"
-                      to="#"
-                    >
-                      Log Out
-                    </Link>
-                  </li>
+                <Link to="/signup" className="btn btn-primary btn-sm">
+                  Start for free
+                </Link>
+              </div>
+            ) : (
+              <div className="user-menu">
+                <div className="user-info">
+                  <FiUser className="user-icon" />
+                  <span className="user-name">User</span>
                 </div>
-              )}
-            </ul>
+                <button
+                  className="logout-btn"
+                  onClick={logout}
+                  aria-label="Logout"
+                >
+                  <FiLogOut />
+                </button>
+              </div>
+            )}
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className="mobile-menu-toggle"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <FiX /> : <FiMenu />}
+            </button>
           </div>
         </div>
-      </nav>
-    </div>
+
+        {/* Mobile Navigation */}
+        <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-menu-content">
+            {navItems.map((item) => {
+              if (item.requireAuth && !isLoggedIn) return null;
+              if (item.hideWhenLoggedIn && isLoggedIn) return null;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`mobile-nav-link ${isActive(item.path) ? 'active' : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+
+            {!isLoggedIn && (
+              <div className="mobile-auth-buttons">
+                <Link
+                  to="/signin"
+                  className="btn btn-ghost btn-sm"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Log in
+                </Link>
+                <Link
+                  to="/signup"
+                  className="btn btn-primary btn-sm"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Start for free
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 

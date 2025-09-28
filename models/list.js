@@ -9,12 +9,15 @@ const listSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    user: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    completed: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

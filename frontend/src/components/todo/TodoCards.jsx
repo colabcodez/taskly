@@ -1,6 +1,6 @@
 import React from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { GrDocumentUpdate } from "react-icons/gr";
+import { FiEdit2, FiTrash2, FiCheck } from "react-icons/fi";
+
 const TodoCards = ({
   title,
   body,
@@ -9,32 +9,64 @@ const TodoCards = ({
   display,
   updateId,
   toBeUpdate,
+  isDeleting = false,
+  completed = false,
+  onToggleCompletion,
 }) => {
   return (
-    <div className="p-3 todo-card">
-      <div>
-        <h5>{title}</h5>
-        <p className="todo-card-p">{body.split("", 77)}...</p>
-      </div>
-      <div className="d-flex justify-content-around ">
-        <div
-          className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 "
-          onClick={() => {
-            display("block");
-            toBeUpdate(updateId);
-          }}
+    <div className={`task-item ${isDeleting ? 'deleting' : ''} ${completed ? 'completed' : ''}`}>
+      <div className="task-checkbox">
+        <button
+          className={`checkbox-btn ${completed ? 'checked' : ''}`}
+          onClick={() => onToggleCompletion(id, completed)}
+          disabled={isDeleting}
+          title={completed ? 'Mark as incomplete' : 'Mark as complete'}
         >
-          <GrDocumentUpdate className="card-icons" /> Update
-        </div>
-        <div
-          className="d-flex justify-content-center align-items-center card-icon-head  px-2 py-1 text-danger"
-          onClick={() => {
-            delid(id);
-          }}
-        >
-          <AiFillDelete className="card-icons del" /> Delete
-        </div>
+          {completed && <FiCheck />}
+        </button>
       </div>
+      <div className="task-content">
+        <span className={`task-text ${completed ? 'completed-text' : ''}`}>{title}</span>
+        {body && <span className={`task-time ${completed ? 'completed-text' : ''}`}>{body}</span>}
+      </div>
+      <div className="task-actions">
+        <button
+          className="action-btn update-btn"
+          onClick={() => {
+            if (!isDeleting) {
+              display("block");
+              toBeUpdate(updateId);
+            }
+          }}
+          disabled={isDeleting}
+          title="Update task"
+        >
+          <FiEdit2 />
+        </button>
+        <button
+          className="action-btn delete-btn"
+          onClick={() => {
+            if (!isDeleting) {
+              delid(id);
+            }
+          }}
+          disabled={isDeleting}
+          title="Delete task"
+        >
+          {isDeleting ? (
+            <div className="spinner-small"></div>
+          ) : (
+            <FiTrash2 />
+          )}
+        </button>
+      </div>
+
+      {isDeleting && (
+        <div className="deleting-overlay">
+          <div className="spinner-small"></div>
+          <span>Deleting...</span>
+        </div>
+      )}
     </div>
   );
 };

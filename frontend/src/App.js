@@ -16,7 +16,7 @@ const App = () => {
     if (id) {
       dispatch(authActions.login());
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
