@@ -9,7 +9,7 @@ const About = () => {
         </div>
 
         <p>
-          WE AIM TO PROVIDE ORGINIZED TODO LIST
+          WE AIM TO PROVIDE ORGANIZED TASK MANAGEMENT WITH TASKLY
         </p>
       </div>
     </div>

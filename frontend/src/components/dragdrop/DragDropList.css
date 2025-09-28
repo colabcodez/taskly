@@ -1,0 +1,95 @@
+.drag-drop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sortable-item {
+  cursor: grab;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.sortable-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+}
+
+.sortable-item.dragging {
+  cursor: grabbing;
+  z-index: 1000;
+  transform: rotate(2deg);
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+}
+
+.sortable-item.disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.sortable-item.disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Drag handle styles */
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--text-tertiary, #718096);
+  cursor: grab;
+  transition: color 0.2s ease;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.drag-handle:hover {
+  color: var(--text-primary, #1a202c);
+}
+
+.sortable-item.dragging .drag-handle {
+  cursor: grabbing;
+}
+
+.sortable-item {
+  position: relative;
+  padding-left: 40px;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .sortable-item:hover {
+  box-shadow: var(--shadow, 0 1px 3px 0 rgba(0, 0, 0, 0.3));
+}
+
+[data-theme="dark"] .sortable-item.dragging {
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.3));
+}
+
+[data-theme="dark"] .drag-handle {
+  color: var(--text-tertiary, #a0aec0);
+}
+
+[data-theme="dark"] .drag-handle:hover {
+  color: var(--text-primary, #f7fafc);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .sortable-item {
+    cursor: default;
+  }
+  
+  .sortable-item:hover {
+    transform: none;
+  }
+  
+  .drag-handle {
+    display: none;
+  }
+}

@@ -1,0 +1,217 @@
+/* Rich Text Editor Styles */
+.rich-text-editor {
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 6px;
+  background: var(--bg-primary, white);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.rich-text-editor:hover {
+  border-color: var(--border-hover, #cbd5e0);
+}
+
+.rich-text-editor:focus-within {
+  border-color: var(--info, #4299e1);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Quill Editor Customization */
+.rich-text-editor .ql-toolbar {
+  border-bottom: 1px solid var(--border-color, #e1e5e9);
+  background: var(--bg-secondary, #f8f9fa);
+  padding: 8px 12px;
+}
+
+.rich-text-editor .ql-container {
+  border: none;
+  font-family: inherit;
+}
+
+.rich-text-editor .ql-editor {
+  color: var(--text-primary, #2d3748);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 12px;
+  min-height: 80px;
+}
+
+.rich-text-editor .ql-editor.ql-blank::before {
+  color: var(--text-tertiary, #718096);
+  font-style: normal;
+}
+
+/* Toolbar buttons */
+.rich-text-editor .ql-toolbar .ql-stroke {
+  stroke: var(--text-secondary, #4a5568);
+}
+
+.rich-text-editor .ql-toolbar .ql-fill {
+  fill: var(--text-secondary, #4a5568);
+}
+
+.rich-text-editor .ql-toolbar button:hover .ql-stroke {
+  stroke: var(--info, #4299e1);
+}
+
+.rich-text-editor .ql-toolbar button:hover .ql-fill {
+  fill: var(--info, #4299e1);
+}
+
+.rich-text-editor .ql-toolbar button.ql-active .ql-stroke {
+  stroke: var(--info, #4299e1);
+}
+
+.rich-text-editor .ql-toolbar button.ql-active .ql-fill {
+  fill: var(--info, #4299e1);
+}
+
+/* Dropdown styles */
+.rich-text-editor .ql-toolbar .ql-picker {
+  color: var(--text-secondary, #4a5568);
+}
+
+.rich-text-editor .ql-toolbar .ql-picker-options {
+  background: var(--bg-primary, white);
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+}
+
+.rich-text-editor .ql-toolbar .ql-picker-options .ql-picker-item {
+  color: var(--text-primary, #2d3748);
+}
+
+.rich-text-editor .ql-toolbar .ql-picker-options .ql-picker-item:hover {
+  background: var(--bg-hover, #f7fafc);
+  color: var(--info, #4299e1);
+}
+
+/* Color picker */
+.rich-text-editor .ql-color-picker,
+.rich-text-editor .ql-background {
+  background: var(--bg-primary, white);
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 6px;
+}
+
+/* Link tooltip */
+.rich-text-editor .ql-tooltip {
+  background: var(--bg-primary, white);
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+}
+
+.rich-text-editor .ql-tooltip input {
+  background: var(--bg-primary, white);
+  border: 1px solid var(--border-color, #e1e5e9);
+  color: var(--text-primary, #2d3748);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.rich-text-editor .ql-tooltip a {
+  color: var(--info, #4299e1);
+}
+
+/* Read-only state */
+.rich-text-editor.readonly .ql-toolbar {
+  display: none;
+}
+
+.rich-text-editor.readonly .ql-container {
+  border: none;
+}
+
+.rich-text-editor.readonly .ql-editor {
+  padding: 8px 12px;
+  background: var(--bg-secondary, #f8f9fa);
+  border-radius: 6px;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .rich-text-editor {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-toolbar {
+  background: var(--bg-secondary, #2d3748);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-editor {
+  background: var(--bg-primary, #1a202c);
+  color: var(--text-primary, #f7fafc);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-editor.ql-blank::before {
+  color: var(--text-tertiary, #a0aec0);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-toolbar .ql-stroke {
+  stroke: var(--text-secondary, #a0aec0);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-toolbar .ql-fill {
+  fill: var(--text-secondary, #a0aec0);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-toolbar .ql-picker {
+  color: var(--text-secondary, #a0aec0);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-toolbar .ql-picker-options {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-toolbar .ql-picker-options .ql-picker-item {
+  color: var(--text-primary, #f7fafc);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-toolbar .ql-picker-options .ql-picker-item:hover {
+  background: var(--bg-hover, #4a5568);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-color-picker,
+[data-theme="dark"] .rich-text-editor .ql-background {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-tooltip {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .rich-text-editor .ql-tooltip input {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+  color: var(--text-primary, #f7fafc);
+}
+
+[data-theme="dark"] .rich-text-editor.readonly .ql-editor {
+  background: var(--bg-tertiary, #4a5568);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .rich-text-editor .ql-toolbar {
+    padding: 6px 8px;
+  }
+  
+  .rich-text-editor .ql-toolbar .ql-formats {
+    margin-right: 8px;
+  }
+  
+  .rich-text-editor .ql-toolbar .ql-formats:last-child {
+    margin-right: 0;
+  }
+  
+  .rich-text-editor .ql-editor {
+    padding: 8px;
+    font-size: 13px;
+  }
+}

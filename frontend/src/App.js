@@ -9,6 +9,7 @@ import SignIn from "./components/signup/SignIn";
 import Todo from "./components/todo/Todo";
 import { useDispatch } from "react-redux";
 import { authActions } from "./store";
+// import { ThemeProvider } from "./contexts/ThemeContext";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,20 +20,22 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/todo" element={<Todo />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<SignIn />} />
-        </Routes>
-      </Router>
+    // <ThemeProvider>
+      <div>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/todo" element={<Todo />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<SignIn />} />
+          </Routes>
+        </Router>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    // </ThemeProvider>
   );
 };
 

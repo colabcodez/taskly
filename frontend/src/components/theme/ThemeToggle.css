@@ -1,0 +1,66 @@
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 8px;
+  background: var(--bg-secondary, #ffffff);
+  color: var(--text-primary, #2d3748);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-hover, #f7fafc);
+  border-color: var(--border-hover, #cbd5e0);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(15deg);
+}
+
+.theme-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .theme-toggle {
+  background: var(--bg-secondary, #2d3748);
+  border-color: var(--border-color, #4a5568);
+  color: var(--text-primary, #f7fafc);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: var(--bg-hover, #4a5568);
+  border-color: var(--border-hover, #718096);
+}
+
+/* Compact version */
+.theme-toggle.compact {
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.theme-toggle.compact .theme-text {
+  display: none;
+}
+
+.theme-toggle.compact .theme-icon {
+  width: 14px;
+  height: 14px;
+}

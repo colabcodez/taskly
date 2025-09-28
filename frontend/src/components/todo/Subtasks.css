@@ -1,0 +1,313 @@
+/* Subtasks Component Styles */
+.subtasks-container {
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--bg-secondary, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e1e5e9);
+}
+
+.subtasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.subtasks-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #2d3748);
+}
+
+.subtasks-count {
+  background: var(--bg-tertiary, #e2e8f0);
+  color: var(--text-secondary, #4a5568);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.subtasks-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-bar {
+  width: 60px;
+  height: 4px;
+  background: var(--border-color, #e2e8f0);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--success, #48bb78);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: var(--text-tertiary, #718096);
+  font-weight: 500;
+}
+
+.subtasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.subtask-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--bg-primary, white);
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #e1e5e9);
+  transition: all 0.2s ease;
+}
+
+.subtask-item:hover {
+  border-color: var(--border-hover, #cbd5e0);
+  box-shadow: var(--shadow, 0 1px 3px rgba(0, 0, 0, 0.1));
+}
+
+.subtask-item.completed {
+  background: var(--bg-secondary, #f8f9fa);
+  border-color: var(--success, #48bb78);
+}
+
+.subtask-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color, #cbd5e0);
+  border-radius: 4px;
+  background: var(--bg-primary, white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.subtask-checkbox:hover {
+  border-color: var(--info, #4299e1);
+  transform: scale(1.05);
+}
+
+.subtask-checkbox.checked {
+  background: var(--success, #48bb78);
+  border-color: var(--success, #48bb78);
+  color: white;
+}
+
+.subtask-checkbox:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subtask-text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-primary, #2d3748);
+  transition: all 0.2s ease;
+}
+
+.subtask-text.completed {
+  text-decoration: line-through;
+  color: var(--text-tertiary, #718096);
+}
+
+.subtask-delete {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: var(--bg-secondary, #f7fafc);
+  color: var(--text-tertiary, #718096);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.subtask-item:hover .subtask-delete {
+  opacity: 1;
+}
+
+.subtask-delete:hover {
+  background: var(--error, #e53e3e);
+  color: white;
+  transform: scale(1.1);
+}
+
+.subtask-delete:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.add-subtask-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px dashed var(--border-color, #cbd5e0);
+  background: transparent;
+  color: var(--text-secondary, #4a5568);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.add-subtask-btn:hover {
+  border-color: var(--info, #4299e1);
+  color: var(--info, #4299e1);
+  background: var(--bg-tertiary, #e6f3ff);
+}
+
+.add-subtask-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.add-subtask-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subtask-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 6px;
+  font-size: 14px;
+  background: var(--bg-primary, white);
+  color: var(--text-primary, #2d3748);
+  transition: all 0.2s ease;
+}
+
+.subtask-input:focus {
+  outline: none;
+  border-color: var(--info, #4299e1);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.subtask-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subtask-form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.subtask-save-btn {
+  padding: 6px 12px;
+  background: var(--info, #4299e1);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.subtask-save-btn:hover:not(:disabled) {
+  background: #3182ce;
+  transform: translateY(-1px);
+}
+
+.subtask-save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subtask-cancel-btn {
+  padding: 6px 12px;
+  background: var(--bg-secondary, #f7fafc);
+  color: var(--text-secondary, #4a5568);
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.subtask-cancel-btn:hover:not(:disabled) {
+  background: var(--bg-hover, #e2e8f0);
+  border-color: var(--border-hover, #cbd5e0);
+}
+
+.subtask-cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .subtasks-container {
+  background: var(--bg-secondary, #2d3748);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .subtask-item {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .subtask-item.completed {
+  background: var(--bg-tertiary, #4a5568);
+  border-color: var(--success, #48bb78);
+}
+
+[data-theme="dark"] .subtask-checkbox {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .subtask-delete {
+  background: var(--bg-secondary, #2d3748);
+  color: var(--text-tertiary, #a0aec0);
+}
+
+[data-theme="dark"] .add-subtask-btn {
+  border-color: var(--border-color, #4a5568);
+  color: var(--text-secondary, #a0aec0);
+}
+
+[data-theme="dark"] .add-subtask-btn:hover {
+  border-color: var(--info, #4299e1);
+  color: var(--info, #4299e1);
+  background: var(--bg-tertiary, #2a4365);
+}
+
+[data-theme="dark"] .subtask-input {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+  color: var(--text-primary, #f7fafc);
+}
+
+[data-theme="dark"] .subtask-cancel-btn {
+  background: var(--bg-secondary, #2d3748);
+  border-color: var(--border-color, #4a5568);
+  color: var(--text-secondary, #a0aec0);
+}

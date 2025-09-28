@@ -10,7 +10,6 @@ import {
   FiLogOut,
   FiMenu,
   FiX,
-  FiChevronDown,
 } from "react-icons/fi";
 
 const Navbar = () => {
@@ -54,7 +53,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="navbar-brand" onClick={() => setIsMenuOpen(false)}>
             <FiCheckSquare className="brand-icon" />
-            <span className="brand-text">todoist</span>
+            <span className="brand-text">Taskly</span>
           </Link>
 
           {/* Desktop Navigation */}

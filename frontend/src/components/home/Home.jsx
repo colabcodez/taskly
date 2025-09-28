@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 import {
   FiCheckSquare,
   FiArrowRight,
-  FiStar,
   FiTrendingUp,
   FiShield,
   FiTarget,
-  FiZap,
 } from "react-icons/fi";
 
 const Home = () => {
@@ -23,26 +21,29 @@ const Home = () => {
           <div className="hero-content">
             <div className="hero-text">
               <h1 className="hero-title">
-                Capture tasks at the speed of thought
+                Capture tasks at the speed of thought with{" "}
+                <span className="highlight">Taskly</span>
         </h1>
 
               <p className="hero-description">
-                We've spent over a decade refining Todoist to be an extension of your mind. Capture and organize tasks instantly using easy-flowing, natural language.
+                We've spent over a decade refining Taskly to be an extension of your mind. Capture and organize tasks instantly using easy-flowing, natural language.
               </p>
 
               <div className="hero-actions">
                 {isLoggedIn ? (
-                  <Link to="/todo" className="btn btn-primary btn-lg">
-                    <FiZap className="btn-icon" />
-                    Go to Dashboard
-                    <FiArrowRight className="btn-icon" />
+                  <Link to="/todo" className="cssbuttons-io-button">
+                    <span>Go to Dashboard</span>
+                    <div className="icon">
+                      <FiArrowRight />
+                    </div>
                   </Link>
                 ) : (
                   <>
-                    <Link to="/signup" className="btn btn-primary btn-lg">
-                      <FiZap className="btn-icon" />
-                      Start for free
-                      <FiArrowRight className="btn-icon" />
+                    <Link to="/signup" className="cssbuttons-io-button">
+                      <span>Start for free</span>
+                      <div className="icon">
+                        <FiArrowRight />
+                      </div>
                     </Link>
                     <Link to="/signin" className="btn btn-ghost btn-lg">
                       Sign In
@@ -145,32 +146,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="container">
-          <div className="cta-content">
-            <h2 className="cta-title">Ready to get started?</h2>
-            <p className="cta-description">
-              Join millions of users and boost your productivity today.
-            </p>
-            <div className="cta-actions">
-              {isLoggedIn ? (
-                <Link to="/todo" className="btn btn-primary btn-lg">
-                  <FiZap className="btn-icon" />
-                  Go to Dashboard
-                  <FiArrowRight className="btn-icon" />
-                </Link>
-              ) : (
-                <Link to="/signup" className="btn btn-primary btn-lg">
-                  <FiZap className="btn-icon" />
-                  Start Your Free Trial
-                  <FiArrowRight className="btn-icon" />
-                </Link>
-              )}
-            </div>
-          </div>
-      </div>
-      </section>
+      {/* CTA Section - Removed */}
     </div>
   );
 };

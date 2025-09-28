@@ -1,0 +1,306 @@
+/* File Attachments Component Styles */
+.file-attachments {
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--bg-secondary, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e1e5e9);
+}
+
+.attachments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.attachments-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #2d3748);
+}
+
+.title-icon {
+  color: var(--info, #4299e1);
+  font-size: 16px;
+}
+
+.add-attachment-btn {
+  background: var(--info, #4299e1);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.add-attachment-btn:hover:not(:disabled) {
+  background: #3182ce;
+  transform: translateY(-1px);
+}
+
+.add-attachment-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.attachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--bg-primary, white);
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.attachment-item:hover {
+  border-color: var(--border-hover, #cbd5e0);
+  box-shadow: var(--shadow, 0 1px 3px rgba(0, 0, 0, 0.1));
+}
+
+.attachment-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.attachment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-tertiary, #e2e8f0);
+  border-radius: 6px;
+  color: var(--text-secondary, #4a5568);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.attachment-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.attachment-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary, #2d3748);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.attachment-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-tertiary, #718096);
+}
+
+.attachment-size {
+  font-weight: 500;
+}
+
+.attachment-date {
+  font-weight: 400;
+}
+
+.attachment-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.download-btn {
+  background: var(--bg-secondary, #f7fafc);
+  color: var(--text-secondary, #4a5568);
+}
+
+.download-btn:hover:not(:disabled) {
+  background: var(--info, #4299e1);
+  color: white;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background: var(--bg-secondary, #f7fafc);
+  color: var(--text-secondary, #4a5568);
+}
+
+.delete-btn:hover:not(:disabled) {
+  background: var(--error, #e53e3e);
+  color: white;
+  transform: scale(1.05);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.no-attachments {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-tertiary, #718096);
+}
+
+.no-attachments-icon {
+  font-size: 32px;
+  color: var(--text-tertiary, #718096);
+  margin-bottom: 8px;
+}
+
+.no-attachments p {
+  font-size: 14px;
+  margin: 0 0 12px 0;
+}
+
+.add-first-attachment-btn {
+  background: var(--bg-tertiary, #e2e8f0);
+  color: var(--text-secondary, #4a5568);
+  border: 1px dashed var(--border-color, #cbd5e0);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  margin: 0 auto;
+}
+
+.add-first-attachment-btn:hover:not(:disabled) {
+  background: var(--info, #4299e1);
+  color: white;
+  border-color: var(--info, #4299e1);
+  transform: translateY(-1px);
+}
+
+.add-first-attachment-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* File type specific icon colors */
+.attachment-icon svg[data-file-type="image"] {
+  color: var(--success, #48bb78);
+}
+
+.attachment-icon svg[data-file-type="video"] {
+  color: var(--error, #e53e3e);
+}
+
+.attachment-icon svg[data-file-type="audio"] {
+  color: var(--warning, #ed8936);
+}
+
+.attachment-icon svg[data-file-type="document"] {
+  color: var(--info, #4299e1);
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .file-attachments {
+  background: var(--bg-secondary, #2d3748);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .attachment-item {
+  background: var(--bg-primary, #1a202c);
+  border-color: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .attachment-icon {
+  background: var(--bg-tertiary, #4a5568);
+  color: var(--text-secondary, #a0aec0);
+}
+
+[data-theme="dark"] .attachment-name {
+  color: var(--text-primary, #f7fafc);
+}
+
+[data-theme="dark"] .attachment-meta {
+  color: var(--text-tertiary, #a0aec0);
+}
+
+[data-theme="dark"] .action-btn {
+  background: var(--bg-secondary, #2d3748);
+  color: var(--text-secondary, #a0aec0);
+}
+
+[data-theme="dark"] .no-attachments {
+  color: var(--text-tertiary, #a0aec0);
+}
+
+[data-theme="dark"] .no-attachments-icon {
+  color: var(--text-tertiary, #a0aec0);
+}
+
+[data-theme="dark"] .add-first-attachment-btn {
+  background: var(--bg-tertiary, #4a5568);
+  color: var(--text-secondary, #a0aec0);
+  border-color: var(--border-color, #4a5568);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .attachment-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .attachment-info {
+    width: 100%;
+  }
+  
+  .attachment-actions {
+    align-self: flex-end;
+  }
+  
+  .attachments-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .add-attachment-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
