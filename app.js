@@ -5,17 +5,30 @@ require("./conn/conn");
 const path = require("path");
 const auth = require("./routes/auth");
 const list = require("./routes/list");
-app.use(express.json());
-app.use(cors());
 
+// Middleware
+app.use(express.json());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://todo-list-sage-omega.vercel.app', 'https://todo-list-sage-omega.vercel.app/']
+    : ['http://localhost:3000', 'http://localhost:1000'],
+  credentials: true
+}));
+
+// API Routes
 app.use("/api/v1", auth);
 app.use("/api/v2", list);
 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "frontend", "build")));
-  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, "frontend", "build")));
+
+// Catch all handler: send back React's index.html file for any non-API routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
 });
 
-app.listen(1000, () => {
-  console.log("Server Started");
+// Start server
+const PORT = process.env.PORT || 1000;
+app.listen(PORT, () => {
+  console.log(`Server Started on port ${PORT}`);
 });

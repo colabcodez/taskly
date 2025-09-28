@@ -109,29 +109,6 @@
   font-size: 18px;
 }
 
-.hero-stats {
-  display: flex;
-  gap: 48px;
-  flex-wrap: wrap;
-}
-
-.stat-item {
-  text-align: left;
-}
-
-.stat-number {
-  font-size: 32px;
-  font-weight: 700;
-  color: #2d3748;
-  line-height: 1.2;
-}
-
-.stat-label {
-  font-size: 14px;
-  color: #718096;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
 
 .hero-visual {
   flex: 1;
@@ -414,9 +391,6 @@
     justify-content: center;
   }
 
-  .hero-stats {
-    justify-content: center;
-  }
 
   .hero-visual {
     order: -1;

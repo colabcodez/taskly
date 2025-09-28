@@ -2,8 +2,11 @@ const mongoose = require("mongoose");
 
 const conn = async () => {
   try {
+    // Use MongoDB Atlas or localhost based on environment
+    const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/todo";
+    
     await mongoose
-      .connect("mongodb://localhost:27017/todo", {
+      .connect(mongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })

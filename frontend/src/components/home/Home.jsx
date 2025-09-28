@@ -50,21 +50,6 @@ const Home = () => {
                   </>
                 )}
               </div>
-
-              <div className="hero-stats">
-                <div className="stat-item">
-                  <div className="stat-number">50M+</div>
-                  <div className="stat-label">Users</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">4.7</div>
-                  <div className="stat-label">Rating</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">10+</div>
-                  <div className="stat-label">Years</div>
-                </div>
-              </div>
             </div>
 
             <div className="hero-visual">
