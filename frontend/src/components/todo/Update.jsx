@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_ENDPOINTS } from "../../config/api";
 
 const Update = ({ display, update }) => {
   const [Inputs, setInputs] = useState({
@@ -28,10 +29,10 @@ const Update = ({ display, update }) => {
       return;
     }
 
-    try {
-      const response = await axios.put(`http://localhost:1000/api/v2/updateTask/${update._id}`, Inputs);
-      toast.success(response.data.message);
-      display("none");
+        try {
+          const response = await axios.put(API_ENDPOINTS.TASKS.UPDATE(update._id), Inputs);
+          toast.success(response.data.message);
+          display("none");
     } catch (error) {
       console.error("Error updating task:", error);
       toast.error("Failed to update task");

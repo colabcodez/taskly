@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FiUser, FiMail, FiLock, FiArrowRight, FiCheckSquare } from "react-icons/fi";
+import { API_ENDPOINTS } from "../../config/api";
 
 const Signup = () => {
   const history = useNavigate();
@@ -57,8 +58,8 @@ const Signup = () => {
     }
 
     setIsLoading(true);
-    try {
-      const response = await axios.post(`http://localhost:1000/api/v1/register`, Inputs);
+        try {
+          const response = await axios.post(API_ENDPOINTS.AUTH.REGISTER, Inputs);
 
       if (response.data.message === "User Already Exists") {
         toast.error(response.data.message);

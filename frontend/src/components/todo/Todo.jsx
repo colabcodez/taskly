@@ -32,6 +32,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { authActions } from "../../store";
+import { API_ENDPOINTS } from "../../config/api";
 
 const Todo = () => {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -76,10 +77,10 @@ const Todo = () => {
       return;
     }
 
-    try {
-      await axios.post(`http://localhost:1000/api/v2/addTask`, {
-        title: Inputs.title.trim(),
-        body: Inputs.body.trim(),
+        try {
+          await axios.post(API_ENDPOINTS.TASKS.ADD, {
+            title: Inputs.title.trim(),
+            body: Inputs.body.trim(),
             id: id,
           });
 
@@ -100,10 +101,10 @@ const Todo = () => {
     }
 
     setIsDeleting(Cardid);
-    try {
-      await axios.delete(`http://localhost:1000/api/v2/deleteTask/${Cardid}`, {
+        try {
+          await axios.delete(API_ENDPOINTS.TASKS.DELETE(Cardid), {
           data: { id: id },
-      });
+          });
 
       toast.success("Task deleted successfully");
       await fetchTasks();
@@ -121,10 +122,10 @@ const Todo = () => {
       return;
     }
 
-    try {
-      await axios.patch(`http://localhost:1000/api/v2/toggleTask/${taskId}`, {
-        completed: !currentStatus,
-      });
+        try {
+          await axios.patch(API_ENDPOINTS.TASKS.TOGGLE(taskId), {
+            completed: !currentStatus,
+          });
 
       toast.success(`Task ${!currentStatus ? 'completed' : 'uncompleted'} successfully`);
       await fetchTasks();
@@ -152,7 +153,7 @@ const Todo = () => {
 
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:1000/api/v2/getTasks/${id}`);
+      const response = await axios.get(API_ENDPOINTS.TASKS.GET(id));
       setArray(response.data.list || []);
     } catch (error) {
       console.error("Error fetching tasks:", error);

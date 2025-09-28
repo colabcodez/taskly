@@ -7,6 +7,7 @@ import { authActions } from "../../store";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FiMail, FiLock, FiArrowRight, FiCheckSquare } from "react-icons/fi";
+import { API_ENDPOINTS } from "../../config/api";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -51,12 +52,12 @@ const SignIn = () => {
     }
 
     setIsLoading(true);
-    try {
-      console.log("Attempting sign in with:", Inputs);
-      const response = await axios.post(
-        `http://localhost:1000/api/v1/signin`,
-        Inputs
-      );
+        try {
+          console.log("Attempting sign in with:", Inputs);
+          const response = await axios.post(
+            API_ENDPOINTS.AUTH.SIGNIN,
+            Inputs
+          );
 
       console.log("Sign in response:", response.data);
 
