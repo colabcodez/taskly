@@ -30,6 +30,11 @@ app.get("/", (req, res) => {
   res.json({ message: "TodoList API is running", timestamp: new Date().toISOString() });
 });
 
+// Test endpoint for debugging
+app.get("/api/v1/test", (req, res) => {
+  res.json({ message: "API is working", timestamp: new Date().toISOString() });
+});
+
 // Start server
 const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {

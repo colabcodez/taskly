@@ -1,25 +1,6 @@
-const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
-
-const app = express();
-
-// Middleware
-app.use(express.json());
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? [
-        process.env.FRONTEND_URL || 'https://todo-list-eta-gold.vercel.app',
-        'https://todo-list-eta-gold.vercel.app',
-        'https://todo-list-eta-gold.vercel.app/'
-      ]
-    : ['http://localhost:3000', 'http://localhost:1000', 'http://127.0.0.1:3000'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
 
 // Database connection
 const connectDB = async () => {
@@ -38,13 +19,28 @@ const connectDB = async () => {
 // Connect to database
 connectDB();
 
-// Test endpoint
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Auth API is working", timestamp: new Date().toISOString() });
-});
+// Vercel serverless function
+module.exports = async (req, res) => {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
 
-// SIGN UP
-app.post("/", async (req, res) => {
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
   try {
     console.log("=== REGISTER ENDPOINT DEBUG ===");
     console.log("Request body:", req.body);
@@ -80,7 +76,4 @@ app.post("/", async (req, res) => {
     console.error("Error stack:", error.stack);
     res.status(500).json({ message: "Internal Server Error" });
   }
-});
-
-// Export the app for Vercel
-module.exports = app;
+};

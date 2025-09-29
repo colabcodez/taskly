@@ -35,7 +35,6 @@ const App = () => {
         </Router>
 
         <Footer />
-        {/* <ApiDebug /> */}
       </div>
     // </ThemeProvider>
   );
