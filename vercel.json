@@ -2,15 +2,18 @@
   "version": 2,
   "builds": [
     {
+      "src": "./frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    },
+    {
       "src": "./api/register.js",
       "use": "@vercel/node"
     },
     {
       "src": "./api/signin.js", 
-      "use": "@vercel/node"
-    },
-    {
-      "src": "./app.js",
       "use": "@vercel/node"
     }
   ],
@@ -25,7 +28,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/app.js"
+      "dest": "/frontend/build/index.html"
     }
   ],
   "env": {
