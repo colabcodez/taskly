@@ -2,14 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "./app.js",
+      "src": "./api/register.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "./api/signin.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "app.js"
+      "src": "/api/v1/register",
+      "dest": "/api/register.js"
+    },
+    {
+      "src": "/api/v1/signin",
+      "dest": "/api/signin.js"
     }
   ],
   "env": {
