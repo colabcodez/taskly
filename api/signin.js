@@ -36,7 +36,12 @@ module.exports = async (req, res) => {
     return;
   }
 
-  // Only allow POST requests
+  // Handle GET requests for testing
+  if (req.method === 'GET') {
+    return res.status(200).json({ message: "Signin API is working", timestamp: new Date().toISOString() });
+  }
+
+  // Only allow POST requests for signin
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
