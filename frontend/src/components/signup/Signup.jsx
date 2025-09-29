@@ -53,10 +53,13 @@ const Signup = () => {
   const testApiConnection = async () => {
     try {
       console.log("Testing API connection...");
+      console.log("Testing URL:", API_ENDPOINTS.AUTH.REGISTER.replace('/register', '/test'));
       const response = await axios.get(API_ENDPOINTS.AUTH.REGISTER.replace('/register', '/test'));
       console.log("API test response:", response);
+      toast.success("API connection successful!");
     } catch (error) {
       console.log("API test error:", error);
+      toast.error(`API test failed: ${error.message}`);
     }
   };
 
@@ -106,6 +109,10 @@ const Signup = () => {
         toast.error("API endpoint not found. Please contact support.");
       } else if (error.response?.status >= 500) {
         toast.error("Server error. Please try again later.");
+      } else if (error.code === 'ECONNREFUSED') {
+        toast.error("Cannot connect to server. Please check if the backend is running.");
+      } else if (error.message.includes('CORS')) {
+        toast.error("CORS error: Please check server configuration.");
       } else {
         toast.error(error.response?.data?.message || "Signup failed. Please try again.");
       }
