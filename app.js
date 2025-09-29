@@ -25,27 +25,9 @@ app.use(cors({
 app.use("/api/v1", auth);
 app.use("/api/v2", list);
 
-// Serve static files from the React app build directory
-app.use(express.static(path.join(__dirname, "frontend", "build")));
-
 // Health check endpoint
 app.get("/", (req, res) => {
   res.json({ message: "TodoList API is running", timestamp: new Date().toISOString() });
-});
-
-// Catch all handler: send back React's index.html file for any non-API routes
-app.get("*", (req, res) => {
-  // Don't serve React app for API routes
-  if (req.path.startsWith('/api/')) {
-    return res.status(404).json({ message: 'API endpoint not found' });
-  }
-  // Only serve React app if the build directory exists
-  const buildPath = path.join(__dirname, "frontend", "build", "index.html");
-  if (require('fs').existsSync(buildPath)) {
-    res.sendFile(buildPath);
-  } else {
-    res.status(404).json({ message: 'Frontend not built' });
-  }
 });
 
 // Start server
