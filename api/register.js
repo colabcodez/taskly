@@ -5,7 +5,11 @@ const User = require("../models/user");
 // Database connection
 const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/todo";
+    const mongoURI = process.env.MONGODB_URI;
+    if (!mongoURI) {
+      console.log("No MongoDB URI provided, skipping database connection");
+      return;
+    }
     await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -57,6 +61,13 @@ module.exports = async (req, res) => {
     if (!email || !username || !password) {
       console.log("Validation failed: missing fields");
       return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // Check if MongoDB is connected
+    if (!process.env.MONGODB_URI) {
+      return res.status(503).json({ 
+        message: "Database not configured. Please set MONGODB_URI environment variable." 
+      });
     }
 
     console.log("Checking for existing user with email:", email);
