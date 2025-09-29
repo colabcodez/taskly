@@ -28,6 +28,11 @@ app.use("/api/v2", list);
 // Serve static files from the React app build directory
 app.use(express.static(path.join(__dirname, "frontend", "build")));
 
+// Health check endpoint
+app.get("/", (req, res) => {
+  res.json({ message: "TodoList API is running", timestamp: new Date().toISOString() });
+});
+
 // Catch all handler: send back React's index.html file for any non-API routes
 app.get("*", (req, res) => {
   // Don't serve React app for API routes
