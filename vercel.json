@@ -7,35 +7,12 @@
       "config": {
         "distDir": "build"
       }
-    },
-    {
-      "src": "api/register.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/signin.js", 
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/v1/register",
-      "dest": "/api/register.js"
-    },
-    {
-      "src": "/api/v1/signin",
-      "dest": "/api/signin.js"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
