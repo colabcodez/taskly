@@ -43,11 +43,11 @@
 }
 
 .navbar-brand:hover {
-  color: #3b82f6;
+  color: #e74c3c;
 }
 
 .brand-icon {
-  color: #3b82f6;
+  color: #e74c3c;
   font-size: 28px;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .nav-link.active {
-  color: #3b82f6;
+  color: #e74c3c;
   background: rgba(231, 76, 60, 0.1);
 }
 
@@ -120,13 +120,13 @@
 }
 
 .btn-primary {
-  background: #3b82f6;
+  background: #e74c3c;
   color: white;
   box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
 }
 
 .btn-primary:hover {
-  background: #2563eb;
+  background: #c0392b;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
 }
@@ -159,7 +159,7 @@
 
 .user-icon {
   font-size: 16px;
-  color: #3b82f6;
+  color: #e74c3c;
 }
 
 .logout-btn {
@@ -175,7 +175,7 @@
 
 .logout-btn:hover {
   background: rgba(231, 76, 60, 0.1);
-  color: #3b82f6;
+  color: #e74c3c;
 }
 
 .mobile-menu-toggle {
@@ -192,7 +192,7 @@
 
 .mobile-menu-toggle:hover {
   background: rgba(231, 76, 60, 0.05);
-  color: #3b82f6;
+  color: #e74c3c;
 }
 
 /* Mobile Menu */
@@ -241,7 +241,7 @@
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
   background: rgba(231, 76, 60, 0.1);
-  color: #3b82f6;
+  color: #e74c3c;
 }
 
 .mobile-auth-buttons {

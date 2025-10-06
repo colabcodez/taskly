@@ -52,7 +52,7 @@
 
 .logo-icon {
   font-size: 24px;
-  color: #3b82f6;
+  color: #e74c3c;
 }
 
 .logo-text {
@@ -71,8 +71,8 @@
 }
 
 .dashboard-btn {
-  background: #dbeafe;
-  color: #3b82f6;
+  background: #fdeaea;
+  color: #e74c3c;
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
@@ -86,7 +86,7 @@
 }
 
 .dashboard-btn:hover {
-  background: #bfdbfe;
+  background: #fad2d2;
 }
 
 .btn-icon {
@@ -131,7 +131,7 @@
 
 .logout-btn:hover {
   background: #f7fafc;
-  color: #3b82f6;
+  color: #e74c3c;
 }
 
 /* Main Layout */
@@ -183,7 +183,7 @@
 .user-avatar {
   width: 32px;
   height: 32px;
-  background: #3b82f6;
+  background: #e74c3c;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -240,7 +240,7 @@
 }
 
 .add-task-btn {
-  background: #3b82f6;
+  background: #e74c3c;
   color: white;
   border: none;
   border-radius: 6px;
@@ -255,7 +255,7 @@
 }
 
 .add-task-btn:hover {
-  background: #2563eb;
+  background: #c0392b;
 }
 
 .sidebar-nav {
@@ -288,13 +288,13 @@
 }
 
 .nav-item.active {
-  background: #dbeafe;
-  color: #3b82f6;
+  background: #fdeaea;
+  color: #e74c3c;
   font-weight: 500;
 }
 
 .badge {
-  background: #3b82f6;
+  background: #e74c3c;
   color: white;
   border-radius: 12px;
   padding: 2px 8px;
@@ -895,7 +895,7 @@
 }
 
 .add-task-btn {
-  background: #3b82f6;
+  background: #e74c3c;
   color: white;
   border: none;
   border-radius: 8px;
@@ -970,18 +970,18 @@
 }
 
 .checkbox-btn:hover {
-  border-color: #3b82f6;
-  background: #dbeafe;
+  border-color: #e74c3c;
+  background: #fdeaea;
 }
 
 .checkbox-btn.checked {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: #e74c3c;
+  border-color: #e74c3c;
 }
 
 .checkbox-btn.checked:hover {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #c0392b;
+  border-color: #c0392b;
 }
 
 .completed-text {
@@ -1740,8 +1740,8 @@
 
 .modern-task-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
 }
 
 .modern-task-input::placeholder {
@@ -1799,8 +1799,8 @@
 
 .detail-date-picker:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
 }
 
 .date-icon {
@@ -1828,8 +1828,8 @@
 .detail-category-input:focus,
 .detail-tags-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
 }
 
 /* Reference Footer */
@@ -1862,8 +1862,8 @@
 
 .reference-list-selector:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
 }
 
 .footer-right {
@@ -1893,7 +1893,7 @@
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
-  background: #10b981;
+  background: #e74c3c;
   color: white;
   font-size: 14px;
   font-weight: 500;
@@ -1902,7 +1902,7 @@
 }
 
 .reference-add-btn:hover {
-  background: #059669;
+  background: #c0392b;
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -1911,8 +1911,113 @@
   transform: translateY(0);
 }
 
-/* Responsive Design for Reference Modal */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
+  /* Top Header Mobile */
+  .top-header {
+    padding: 12px 16px;
+    height: 56px;
+  }
+  
+  .header-center {
+    display: none;
+  }
+  
+  .header-right {
+    gap: 8px;
+  }
+  
+  .user-menu {
+    display: none;
+  }
+  
+  /* Sidebar Mobile */
+  .projects-sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+    z-index: 1001;
+  }
+  
+  .projects-sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-header {
+    padding: 12px 16px;
+  }
+  
+  .sidebar-content {
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  /* Main Content Mobile */
+  .main-layout {
+    margin-top: 56px;
+  }
+  
+  .content-area {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .content-header {
+    padding: 16px;
+  }
+  
+  .sidebar-toggle {
+    display: block;
+  }
+  
+  /* Tasks Mobile */
+  .tasks-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .add-task-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  
+  .add-task-btn,
+  .add-recurring-btn,
+  .add-template-btn,
+  .advanced-filters-btn,
+  .notifications-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Task Items Mobile */
+  .task-item {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .task-checkbox {
+    align-self: flex-start;
+  }
+  
+  .task-content {
+    width: 100%;
+  }
+  
+  .task-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .task-meta {
+    align-self: flex-end;
+  }
+  
+  /* Modal Mobile */
   .modern-task-modal {
     max-width: 95%;
     margin: 20px;
@@ -1931,5 +2036,85 @@
   
   .footer-right {
     justify-content: center;
+  }
+  
+  /* Upcoming View Mobile */
+  .upcoming-header {
+    padding: 16px;
+  }
+  
+  .date-bar {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  
+  .date-item {
+    min-width: 60px;
+    flex-shrink: 0;
+  }
+  
+  /* Filters Mobile */
+  .filters-labels-view {
+    padding: 16px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 32px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+  }
+  
+  .hero-demo-container {
+    padding: 10px;
+  }
+  
+  .task-input {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+  
+  .task-tags {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .tag {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .tasks-header h2 {
+    font-size: 20px;
+  }
+  
+  .task-item {
+    padding: 10px 12px;
+  }
+  
+  .modern-task-modal {
+    margin: 10px;
+    max-width: calc(100% - 20px);
+  }
+  
+  .modal-header {
+    padding: 16px 20px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .reference-footer {
+    padding: 16px 20px;
   }
 }

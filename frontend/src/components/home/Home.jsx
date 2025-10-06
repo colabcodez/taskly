@@ -8,6 +8,10 @@ import {
   FiTrendingUp,
   FiShield,
   FiTarget,
+  FiCalendar,
+  FiUser,
+  FiFlag,
+  FiMoreHorizontal,
 } from "react-icons/fi";
 
 const Home = () => {
@@ -20,10 +24,10 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-text">
+              <div className="hero-subtitle">Clear your mind</div>
               <h1 className="hero-title">
-                Capture tasks at the speed of thought with{" "}
-                <span className="highlight">Taskly</span>
-        </h1>
+                Capture tasks at the speed of thought
+              </h1>
 
               <p className="hero-description">
                 We've spent over a decade refining Taskly to be an extension of your mind. Capture and organize tasks instantly using easy-flowing, natural language.
@@ -54,49 +58,53 @@ const Home = () => {
             </div>
 
             <div className="hero-visual">
-              <div className="hero-card">
-                <div className="card-header">
-                  <div className="card-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-                <div className="card-content">
-                  <div className="task-input-container">
-                    <input 
-                      type="text" 
-                      className="task-input" 
-                      placeholder="List property on Realtor.com"
-                      defaultValue="List property on Realtor.com +Paul"
-                    />
-                    <div className="task-tags">
-                      <div className="tag">
-                        <FiTarget className="tag-icon" />
-                        <span>Due date</span>
-                        <span className="tag-close">×</span>
-                      </div>
-                      <div className="tag">
-                        <FiTarget className="tag-icon" />
-                        <span>Paul O.</span>
-                        <span className="tag-close">×</span>
-                      </div>
-                      <div className="tag">
-                        <FiTarget className="tag-icon" />
-                        <span>Priority</span>
-                        <span className="tag-close">×</span>
-                      </div>
-                      <div className="tag-more">...</div>
+              <div className="hero-demo-container">
+                <div className="hero-card">
+                  <div className="card-header">
+                    <div className="card-dots">
+                      <span></span>
+                      <span></span>
+                      <span></span>
                     </div>
-                    <div className="task-footer">
-                      <div className="inbox-selector">
-                        <FiCheckSquare className="inbox-icon" />
-                        <span>Inbox</span>
-                        <FiArrowRight className="dropdown-icon" />
+                  </div>
+                  <div className="card-content">
+                    <div className="task-input-container">
+                      <input 
+                        type="text" 
+                        className="task-input" 
+                        placeholder="Review website traffic"
+                        defaultValue="Review website traffic"
+                      />
+                      <div className="task-tags">
+                        <div className="tag">
+                          <FiCalendar className="tag-icon" />
+                          <span>Due date</span>
+                          <span className="tag-close">×</span>
+                        </div>
+                        <div className="tag">
+                          <FiUser className="tag-icon" />
+                          <span>Assignee</span>
+                          <span className="tag-close">×</span>
+                        </div>
+                        <div className="tag">
+                          <FiFlag className="tag-icon" />
+                          <span>Priority</span>
+                          <span className="tag-close">×</span>
+                        </div>
+                        <div className="tag-more">
+                          <FiMoreHorizontal />
+                        </div>
                       </div>
-                      <button className="add-task-btn">
-                        Add task
-                      </button>
+                      <div className="task-footer">
+                        <div className="inbox-selector">
+                          <FiCheckSquare className="inbox-icon" />
+                          <span>Inbox</span>
+                          <FiArrowRight className="dropdown-icon" />
+                        </div>
+                        <button className="add-task-btn">
+                          Add task
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
